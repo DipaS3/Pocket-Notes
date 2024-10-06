@@ -1,0 +1,62 @@
+.create-notes{
+    position: fixed;
+    background-color: white;
+    top: 27%;
+    left: 27%;
+    border-radius: 10px;
+    padding-top: 30px;
+    padding-left: 40px;
+    width: 45vw;
+    height: 45vh;
+}
+.grp-name{
+    display: flex;
+    gap: 40px;
+    margin-top: 20px;
+    align-items: center;
+}
+.grp-name input{
+    padding: 5px 20px;
+    border-radius: 15px;
+    color:black;
+    border: 2px solid grey;
+    font-size: 1.3vw;
+    width: 60%;
+}
+.create-notes h1{
+    font-weight: 500;
+    font-size: 1.8vw;
+}
+
+.create-notes h2{
+    font-weight: 500;
+    font-size: 1.4vw;
+}
+.select-color{
+    display: flex;
+    margin-top: 40px;
+    gap:50px;
+    align-items: center;
+}
+.color{
+    display: flex;
+    gap: 20px;
+}
+
+.create-btn{
+    margin-top: 30px;
+    margin-left: 75%;
+    cursor: pointer;
+    padding: 6px 35px 6px 35px;
+    color: white;
+    border-radius: 10px;
+    background-color: #001F8B;
+    font-weight: 400;
+    font-size: 20px;
+}
+.color div{
+    height: 40px;
+    width:40px;
+    border-radius: 20px;
+    cursor: pointer;
+}

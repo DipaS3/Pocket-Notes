@@ -1,0 +1,46 @@
+.sidebar{
+    width:40vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    overflow-x: hidden;
+    overflow-y:auto;
+    position: relative;
+    
+}
+.sidebar img{
+    width:50%;
+}
+
+
+.side-heading{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 500;
+    font-size: 2vw;
+    height: 15vh;
+
+}
+.addtitle{
+    height: 85vh;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    padding-top: 20px;
+    padding-left: 40px;
+}
+.addtitle p{
+    width: 80%;
+}
+.plus-btn{
+    display: flex;
+    position: fixed;
+    top:83vh;
+    left:20vw;
+    cursor: pointer;
+    border-radius: 40px;
+
+
+}

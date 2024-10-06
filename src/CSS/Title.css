@@ -1,0 +1,27 @@
+.title-section{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding-left: 50px;
+    padding-top: 5px;
+    padding-bottom: 20px;
+}
+
+.heading{
+    width: 40px;
+    height: 40px;
+    border-radius: 50px;
+    color: white;
+    font-size: 1.6vw;
+    font-weight: 500;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+}
+.note-title{
+    font-weight: 500;
+    font-family: Roboto;
+    font-size: 1.4vw;
+
+}
