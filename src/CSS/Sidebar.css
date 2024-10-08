@@ -1,76 +1,70 @@
-.sidebar{
-    width:40vw;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    background-color: white;
-    overflow-x: hidden;
-    overflow-y:auto;
-    position: relative;
-    
+.sidebar {
+  width: 40vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
-.sidebar img{
-    width:50%;
+.sidebar img {
+  width: 50%;
 }
 
-
-.side-heading{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-weight: 500;
-    font-size: 2vw;
-    height: 15vh;
-
+.side-heading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 500;
+  font-size: 2vw;
+  height: 15vh;
 }
-.addtitle{
-    height: 85vh;
-    display: flex;
-    flex-direction: column;
-    overflow-y: auto;
-    padding-top: 20px;
-    padding-left: 40px;
+.addtitle {
+  height: 85vh;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  padding-top: 20px;
+  padding-left: 40px;
 }
-.addtitle p{
-    width: 80%;
+.addtitle p {
+  width: 80%;
 }
-.plus-btn{
-    display: flex;
-    position: fixed;
-    top:83vh;
-    left:20vw;
-    cursor: pointer;
-    border-radius: 40px;
-
-
+.plus-btn {
+  display: flex;
+  position: fixed;
+  top: 83vh;
+  left: 20vw;
+  cursor: pointer;
+  border-radius: 40px;
 }
 
-.title-heading{
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    cursor: pointer;
+.title-heading {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  cursor: pointer;
 }
 .title-heading.active {
-    background-color: rgba(0, 0, 0, 0.1); /* Highlight the active note */
-    border-left: 4px solid #4caf50; /* Example: Add a colored border */
-  }
-.capital{
-    width: 65px;
-    height: 65px;
-    border-radius: 50px;
-    color: white;
-    font-size: 24px;
-    font-weight: 500;   
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 30px;
+  background-color: rgba(0, 0, 0, 0.1); /* Highlight the active note */
+  border-left: 4px solid #4caf50; /* Example: Add a colored border */
 }
-.heading{
-    font-weight: 500;
-    font-family: Roboto;
-    font-size: 24px;
+.capital {
+  width: 65px;
+  height: 65px;
+  border-radius: 50px;
+  color: white;
+  font-size: 24px;
+  font-weight: 500;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+}
+.heading {
+  font-weight: 500;
+  font-family: Roboto;
+  font-size: 24px;
 }
