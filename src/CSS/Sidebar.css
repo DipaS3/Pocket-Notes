@@ -44,3 +44,33 @@
 
 
 }
+
+.title-heading{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    cursor: pointer;
+}
+.title-heading.active {
+    background-color: rgba(0, 0, 0, 0.1); /* Highlight the active note */
+    border-left: 4px solid #4caf50; /* Example: Add a colored border */
+  }
+.capital{
+    width: 65px;
+    height: 65px;
+    border-radius: 50px;
+    color: white;
+    font-size: 24px;
+    font-weight: 500;   
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+}
+.heading{
+    font-weight: 500;
+    font-family: Roboto;
+    font-size: 24px;
+}

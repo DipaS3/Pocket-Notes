@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import "../CSS/CreateNotes.css";
 
-
-const CreateNotes = ({ isModalOpen }) => {
+const CreateNotes = ({ isModalOpen, addNote, setIsModalOpen }) => {
   const [notesTitle, setNotesTitle] = useState("");
   const [selectedColor, setSelectedColor] = useState("");
   const colors = [
@@ -14,77 +13,70 @@ const CreateNotes = ({ isModalOpen }) => {
     "#6691FF",
   ];
 
-  const [task, setTask] = useState([]);
-
   const addNotes = (e) => {
     setNotesTitle(e.target.value);
   };
 
   const handleNotesTitle = () => {
-    const data = {
-      title: notesTitle,
-      color: selectedColor,
-    };
     if (!notesTitle.trim()) {
       alert("Please enter a group name");
       return;
     }
 
     if (!selectedColor) {
-      alert("please choose a color");
+      alert("Please choose a color");
       return;
     }
 
-    setTask([...task, notesTitle, selectedColor]);
-    // setColorTask([...colorTask,selectedColor]);
+    const newNote = { notesTitle, selectedColor };
+    addNote(newNote); // Use the function passed from App.js
+
+    // Clear the input fields
     setNotesTitle("");
     setSelectedColor("");
+    setIsModalOpen(false);
   };
 
   if (isModalOpen) {
     return (
-      <>
-        <div className="create-notes">
-          <h1>Create New group</h1>
-          <div className="grp-name">
-            <h2>Group Name</h2>
-            <input
-              type="text"
-              value={notesTitle}
-              onChange={addNotes}
-              placeholder="Enter group name"
-            />
-          </div>
-
-          <div className="select-color">
-            <h2>Choose colour</h2>
-            <div className="color">
-              {colors.map((item, i) => (
-                <div
-                  key={i}
-                  style={{ background: item }}
-                  className={`colors are ${
-                    setSelectedColor === item ? "choosen" : ""
-                  }`}
-                  onClick={() => setSelectedColor(item)}
-                ></div>
-              ))}
-            </div>
-          </div>
-
-          <div>
-            <button className="create-btn" onClick={handleNotesTitle}>
-              Create{" "}
-            </button>
-          </div>
-
-          {notesTitle}
-          {selectedColor}
+      <div className="create-notes">
+        <h1>Create New Group</h1>
+        <div className="grp-name">
+          <h2>Group Name</h2>
+          <input
+            type="text"
+            value={notesTitle}
+            onChange={addNotes}
+            placeholder="Enter group name"
+          />
         </div>
-      </>
+
+        <div className="select-color">
+          <h2>Choose Colour</h2>
+          <div className="color">
+            {colors.map((item, i) => (
+              <div
+                key={i}
+                style={{ background: item }}
+                className={`color-choosen ${
+                  selectedColor === item ? "choosen" : ""
+                }`}
+                onClick={() => setSelectedColor(item)}
+              ></div>
+            ))}
+          </div>
+        </div>
+
+        <div>
+          <button className="create-btn" onClick={handleNotesTitle}>
+            Create
+          </button>
+        </div>
+      </div>
     );
   } else {
     return <div></div>;
   }
 };
+
 export default CreateNotes;
