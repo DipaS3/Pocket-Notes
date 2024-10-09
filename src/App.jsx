@@ -1,40 +1,39 @@
 import { useState, useEffect } from "react";
-import { v4 as uuidv4 } from "uuid"; // Import uuid
-import "./App.css";
+import { v4 as uuidv4 } from "uuid";
+import { Route, Routes, BrowserRouter as Router } from "react-router-dom";
 import Sidebar from "./Components/Sidebar";
 import Notes from "./Components/Notes";
 
 function App() {
   const [alldata, setAllData] = useState([]);
   const [selectedNote, setSelectedNote] = useState(null);
-  const [cardsNotes, setCardNotes] = useState([]);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
+  const handleResize = () => {
+    setIsMobile(window.innerWidth <= 768);
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   useEffect(() => {
     const storedData = localStorage.getItem("alldata");
-  if (storedData) {
-    try {
-      const parsedData = JSON.parse(storedData);
-      if (Array.isArray(parsedData)) {
-        setAllData(parsedData);
-      } else {
-        setAllData([]); 
-      }
-    } catch (error) {
-      console.error("Error parsing alldata from localStorage:", error);
-      setAllData([]); 
+    if (storedData) {
+      setAllData(JSON.parse(storedData) || []);
     }
-  }
- 
   }, []);
 
   const addNote = (note) => {
     const newNote = {
-      id: uuidv4(), // Generate a unique ID
-      title: note.notesTitle.slice(0,1).toUpperCase() + note.notesTitle.slice(1),
+      id: uuidv4(),
+      title: note.notesTitle.charAt(0).toUpperCase() + note.notesTitle.slice(1),
       color: note.selectedColor,
-      notes: [], // Initialize with an empty array for subnotes
+      notes: [],
     };
-
     const updatedData = [...alldata, newNote];
     setAllData(updatedData);
     localStorage.setItem("alldata", JSON.stringify(updatedData));
@@ -47,34 +46,54 @@ function App() {
     setAllData(newData);
     localStorage.setItem("alldata", JSON.stringify(newData));
   };
-
-  useEffect(() => {
-    const storedCardData = localStorage.getItem("cardsNotes");
-    if (storedCardData) {
-      setCardNotes(JSON.parse(storedCardData));
-    }
-  }, []);
-
-  const addCard = (cards) => {
-    const updatedCards = [...cardsNotes, cards];
-    setCardNotes(updatedCards);
-    localStorage.setItem("cardsNotes", JSON.stringify(updatedCards));
-  };
-
   const handleNoteSelection = (note) => {
     setSelectedNote(note);
   };
 
   return (
-    <div className="d-flex">
-      <Sidebar
-        alldata={alldata}
-        addNote={addNote}
-        onSelectNote={handleNoteSelection}
-        selectedNote={selectedNote}
-      />
-      <Notes note={selectedNote} cards={cardsNotes} updateNote={updateNote} />
-    </div>
+    <Router>
+      <div className="app">
+        {isMobile ? (
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <Sidebar
+                  alldata={alldata}
+                  addNote={addNote}
+                  onSelectNote={handleNoteSelection}
+                  selectedNote={selectedNote}
+                />
+              }
+            />
+            <Route
+              path="/note"
+              element={
+                <Notes
+                  note={selectedNote}
+                  updateNote={updateNote}
+                  setSelectedNote={setSelectedNote}
+                />
+              }
+            />
+          </Routes>
+        ) : (
+          <div className="d-flex">
+            <Sidebar
+              alldata={alldata}
+              addNote={addNote}
+              onSelectNote={handleNoteSelection}
+              selectedNote={selectedNote}
+            />
+            <Notes
+              note={selectedNote}
+              updateNote={updateNote}
+              setSelectedNote={setSelectedNote}
+            />
+          </div>
+        )}
+      </div>
+    </Router>
   );
 }
 

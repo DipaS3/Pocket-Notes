@@ -25,7 +25,6 @@
   flex-direction: column;
   overflow-y: auto;
   padding-top: 20px;
-  padding-left: 40px;
 }
 .addtitle p {
   width: 80%;
@@ -34,7 +33,7 @@
   display: flex;
   position: fixed;
   top: 83vh;
-  left: 20vw;
+  left: 10vw;
   cursor: pointer;
   border-radius: 40px;
 }
@@ -69,24 +68,21 @@
   font-size: 24px;
 }
 
-
 /* Mobile */
 @media (max-width: 600px) {
   .sidebar {
     width: 100vw;
     height: auto;
   }
-  .side-heading{
+  .side-heading {
     justify-content: flex-start;
     margin-left: 50px;
     height: 12vh;
-
   }
 
-    .title-heading {
-      font-size: 1.2rem; /* Smaller font for mobile devices */
-    }
-  
+  .title-heading {
+    font-size: 1.2rem; /* Smaller font for mobile devices */
+  }
 }
 
 /* For medium screens like tablets */
@@ -94,17 +90,15 @@
   .sidebar {
     width: 30vw;
   }
-  .plus-btn{
+  .plus-btn {
     left: 15%;
-      top: auto;
-      bottom: 50px;
-      width: 75px;
-    
+    top: auto;
+    bottom: 50px;
+    width: 75px;
   }
-  .side-heading{
+  .side-heading {
     justify-content: flex-start;
     margin-left: 50px;
     height: 12vh;
   }
 }
-

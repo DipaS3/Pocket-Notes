@@ -1,46 +1,76 @@
 import React, { useEffect, useState } from "react";
 import "../App.css";
-import "../CSS/Sidebar.css";
 import "../CSS/Notes.css";
-import Home from "./Home";
 import { IoSend } from "react-icons/io5";
 import { capitalizeInitialLetter } from "../utils/strinutils.js";
 import { formatDate } from "../utils/strinutils.js";
-import { v4 as uuidv4 } from "uuid"; // Import uuid
+import { v4 as uuidv4 } from "uuid";
+import { useNavigate, useParams } from "react-router-dom";
 
-
-const Notes = ({ note, cards, updateNote }) => {
+const Notes = ({ note, cards, updateNote, setSelectedNote }) => {
+  const { noteId } = useParams();
   const [subNoteText, setSubNoteText] = useState("");
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
   const [addedNotes, setAddedNotes] = useState([]);
-  
+  const [currentNote, setCurrentNote] = useState(note);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    if (note) {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (isMobile && noteId) {
+      const storedData = localStorage.getItem("alldata");
+      if (storedData) {
+        try {
+          const parsedData = JSON.parse(storedData);
+          const foundNote = parsedData.find((n) => n.id === noteId);
+          if (foundNote) {
+            setCurrentNote(foundNote);
+            setAddedNotes(foundNote.notes || []);
+          } else {
+            // If no note is found, navigate back to the home page
+            navigate("/");
+          }
+        } catch (error) {
+          console.error("Error parsing alldata from localStorage:", error);
+        }
+      }
+    } else if (note) {
+      setCurrentNote(note);
       setAddedNotes(note.notes || []);
     }
-  }, [note]);
+  }, [isMobile, noteId, note, navigate]);
 
-  if (!note) {
-    return <Home />;
+  // Guard clause for currentNote
+  if (!currentNote) {
+    return <div>Loading...</div>; // Or a placeholder if currentNote is null
   }
 
-  const { title, color } = note; // Destructure title and color
+  const { title, color } = currentNote;
 
   const handleSend = () => {
     const { datePart, timePart } = formatDate();
     if (subNoteText.trim()) {
       const newSubNote = {
-        id: uuidv4(), // Generate a unique ID for subnote
+        id: uuidv4(),
         text: subNoteText,
         timestamp: [datePart, timePart],
       };
 
-      const updatedNotes = [...addedNotes, newSubNote]; // Append new subnote
+      const updatedNotes = [...addedNotes, newSubNote];
       setAddedNotes(updatedNotes);
       setSubNoteText("");
 
-      // Update the note object in local storage
-      updateNote({ ...note, notes: updatedNotes });
+      updateNote({ ...currentNote, notes: updatedNotes });
     }
   };
 
@@ -58,8 +88,8 @@ const Notes = ({ note, cards, updateNote }) => {
   return (
     <div className="notesSection">
       <div className="title">
-      <button className="back-button">
-      ←
+        <button onClick={() => setSelectedNote(null)} className="back-button">
+          ←
         </button>
         <div
           className="flex items-center justify-center rounded-circle p-3 gap-4"
