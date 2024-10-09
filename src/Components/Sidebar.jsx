@@ -26,11 +26,11 @@ const Sidebar = ({ alldata, addNote, onSelectNote, selectedNote }) => {
                 onClick={() => onSelectNote(data)}
                 style={{
                   backgroundColor:
-                    selectedNote?.id === data.id ? "#e0e0e0" : "transparent", // Change this to your preferred color
-                  borderRadius: "4px", // Optional: Add some rounding for aesthetics
+                    selectedNote?.id === data.id ? "#e0e0e0" : "transparent", 
+                  borderRadius: "4px", 
                   margin: "4px 0",
                   paddingLeft:"0px"
-                   // Optional: Add some spacing between items
+                  
                 }}
               >
                 <div

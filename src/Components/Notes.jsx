@@ -8,9 +8,11 @@ import { capitalizeInitialLetter } from "../utils/strinutils.js";
 import { formatDate } from "../utils/strinutils.js";
 import { v4 as uuidv4 } from "uuid"; // Import uuid
 
+
 const Notes = ({ note, cards, updateNote }) => {
   const [subNoteText, setSubNoteText] = useState("");
   const [addedNotes, setAddedNotes] = useState([]);
+  
 
   useEffect(() => {
     if (note) {
@@ -56,6 +58,9 @@ const Notes = ({ note, cards, updateNote }) => {
   return (
     <div className="notesSection">
       <div className="title">
+      <button className="back-button">
+      ←
+        </button>
         <div
           className="flex items-center justify-center rounded-circle p-3 gap-4"
           style={{
