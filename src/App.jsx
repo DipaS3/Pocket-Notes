@@ -78,7 +78,7 @@ function App() {
             />
           </Routes>
         ) : (
-          <div className="d-flex">
+          <div className="grid-container">
             <Sidebar
               alldata={alldata}
               addNote={addNote}

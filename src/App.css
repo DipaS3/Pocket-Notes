@@ -11,6 +11,12 @@ body{
 
 
 }
+.grid-container{
+  display: grid;
+  grid-template-columns: .5fr 1.5fr;
+
+}
+
 
 @media (min-width: 768px) {
   .d-flex {
