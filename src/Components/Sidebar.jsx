@@ -26,6 +26,7 @@ const Sidebar = ({ alldata, addNote, onSelectNote, selectedNote }) => {
     onSelectNote(data);
     navigate(`/note?id=${data.id}`); // Navigate to note detail on click
   };
+  
 
   return (
     <div

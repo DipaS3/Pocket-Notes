@@ -6,7 +6,7 @@ import { capitalizeInitialLetter } from "../utils/strinutils.js";
 import { formatDate } from "../utils/strinutils.js";
 import { v4 as uuidv4 } from "uuid";
 import { useNavigate, useParams } from "react-router-dom";
-
+import Home from "./Home.jsx";
 const Notes = ({ note, cards, updateNote, setSelectedNote }) => {
   const { noteId } = useParams();
   const [subNoteText, setSubNoteText] = useState("");
@@ -52,7 +52,7 @@ const Notes = ({ note, cards, updateNote, setSelectedNote }) => {
 
   // Guard clause for currentNote
   if (!currentNote) {
-    return <div>Loading...</div>; // Or a placeholder if currentNote is null
+    return <Home/>// Or a placeholder if currentNote is null
   }
 
   const { title, color } = currentNote;
