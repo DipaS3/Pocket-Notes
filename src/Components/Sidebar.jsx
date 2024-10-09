@@ -3,6 +3,7 @@ import plus from "../assets/Add.png";
 import "../CSS/Sidebar.css";
 import CreateNotes from "./CreateNotes";
 import { capitalizeInitialLetter } from "../utils/strinutils.js";
+import { Link } from "react-router-dom";
 
 const Sidebar = ({ alldata, addNote, onSelectNote, selectedNote }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -27,7 +28,9 @@ const Sidebar = ({ alldata, addNote, onSelectNote, selectedNote }) => {
                   backgroundColor:
                     selectedNote?.id === data.id ? "#e0e0e0" : "transparent", // Change this to your preferred color
                   borderRadius: "4px", // Optional: Add some rounding for aesthetics
-                  margin: "5px 0", // Optional: Add some spacing between items
+                  margin: "4px 0",
+                  paddingLeft:"0px"
+                   // Optional: Add some spacing between items
                 }}
               >
                 <div

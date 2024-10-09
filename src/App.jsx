@@ -11,15 +11,26 @@ function App() {
 
   useEffect(() => {
     const storedData = localStorage.getItem("alldata");
-    if (storedData) {
-      setAllData(JSON.parse(storedData));
+  if (storedData) {
+    try {
+      const parsedData = JSON.parse(storedData);
+      if (Array.isArray(parsedData)) {
+        setAllData(parsedData);
+      } else {
+        setAllData([]); 
+      }
+    } catch (error) {
+      console.error("Error parsing alldata from localStorage:", error);
+      setAllData([]); 
     }
+  }
+ 
   }, []);
 
   const addNote = (note) => {
     const newNote = {
       id: uuidv4(), // Generate a unique ID
-      title: note.notesTitle,
+      title: note.notesTitle.slice(0,1).toUpperCase() + note.notesTitle.slice(1),
       color: note.selectedColor,
       notes: [], // Initialize with an empty array for subnotes
     };

@@ -4,11 +4,6 @@ body{
   font-family: 'Roboto';
   background-color: #DAE5F5;
 }
-
-
-
-
-
 *{
   margin: 0;
   padding: 0;
@@ -17,6 +12,11 @@ body{
 
 }
 
+@media (min-width: 768px) {
+  .d-flex {
+    display: flex;
+  }
+}
 
 
 

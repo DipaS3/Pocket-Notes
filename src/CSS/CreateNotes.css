@@ -1,4 +1,4 @@
-.create-notes{
+ .create-notes{
     position: fixed;
     background-color: white;
     top: 27%;
@@ -68,3 +68,61 @@
 .color-choosen.choosen {
     border: 2px solid black;
 }
+
+/* Responsive */
+ @media (max-width: 768px) {
+ 
+    .create-notes {
+        height: 250px;
+        width: 80vw;
+        top: 30%;
+        left: 9.5%;
+        padding-top: 20px;
+        padding-left: 30px;
+        padding-right: 20px;
+    }
+
+    h1 {
+        font-size: 17px;
+        font-weight: 500;
+    }
+
+    h2 {
+        font-size: 14px;
+    }
+
+    .grp-name input{
+        width: 150px;
+        height: 25px;
+        font-size: 12px;
+    }
+
+    .grp-name {
+        flex-direction: row;
+        gap: 7px;
+    }
+
+    .color-choose {
+        flex-direction: row;
+        gap: 7px;
+    }
+
+    .color div {
+        height: 18px;
+        width: 18px;
+    }
+
+    
+
+    .create-btn {
+        font-size: 16px;
+        margin-left: 35px;
+        margin-top: 30px;
+        height: 32px;
+        width: 170px;
+        text-align: center;
+    }
+   
+ }  
+
+

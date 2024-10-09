@@ -49,7 +49,7 @@
 }
 .title-heading.active {
   background-color: rgba(0, 0, 0, 0.1); /* Highlight the active note */
-  border-left: 4px solid #4caf50; /* Example: Add a colored border */
+  border-left: 10px solid #4caf50; /* Example: Add a colored border */
 }
 .capital {
   width: 65px;
@@ -68,3 +68,43 @@
   font-family: Roboto;
   font-size: 24px;
 }
+
+
+/* Mobile */
+@media (max-width: 600px) {
+  .sidebar {
+    width: 100vw;
+    height: auto;
+  }
+  .side-heading{
+    justify-content: flex-start;
+    margin-left: 50px;
+    height: 12vh;
+
+  }
+
+    .title-heading {
+      font-size: 1.2rem; /* Smaller font for mobile devices */
+    }
+  
+}
+
+/* For medium screens like tablets */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 30vw;
+  }
+  .plus-btn{
+    left: 15%;
+      top: auto;
+      bottom: 50px;
+      width: 75px;
+    
+  }
+  .side-heading{
+    justify-content: flex-start;
+    margin-left: 50px;
+    height: 12vh;
+  }
+}
+
